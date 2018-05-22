@@ -1,0 +1,10 @@
+void phi(int n,int *phi){//1~n所有数的欧拉函数值
+//n -》 n*(1-1/p1)(1-1/p2)(1-1/p3)(...)(1-1/pk)
+    for(int i=2;i<=n;i++)phi[i]=0;
+    phi[1]=1;
+    for(int i=2;i<=n;i++)if(!phi[i])
+        for(int j=i;j<=n;j+=i){
+            if(!phi[j])phi[j]=j;
+            phi[j]=phi[j]/i*(i-1);
+        }
+}
